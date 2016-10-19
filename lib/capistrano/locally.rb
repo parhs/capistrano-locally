@@ -7,7 +7,7 @@ end
 
 
 module Capistrano
-  module DSL
+  DSL.class_eval do
     alias original_on on
 
     def on(hosts, options={}, &block)
