@@ -1,5 +1,4 @@
 require "capistrano/locally/version"
-require "capistrano/dsl"
 
 module Capistrano
   module Locally
