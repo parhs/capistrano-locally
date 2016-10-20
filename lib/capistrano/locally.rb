@@ -1,5 +1,5 @@
 require "capistrano/locally/version"
-require "capistrano/dsl"
+require "capistrano"
 
 module Capistrano
   module Locally
@@ -8,7 +8,7 @@ end
 
 
 module Capistrano
-  DSL.class_eval do
+  module DSL
     alias original_on on
 
     def on(hosts, options={}, &block)
@@ -29,7 +29,7 @@ module Capistrano
 
     private
     def dry_run?
-      fetch(:sshkit_backend) == ::SSHKit::Backend::Printer
+      fetch(:sshkit_backend) == SSHKit::Backend::Printer
     end
   end
 end
