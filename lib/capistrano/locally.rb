@@ -1,5 +1,6 @@
 require "capistrano/locally/version"
-require "capistrano"
+require "sshkit"
+require "capistrano/dsl"
 
 module Capistrano
   module Locally
