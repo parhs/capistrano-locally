@@ -16,16 +16,16 @@ module Capistrano
       return unless hosts
       localhosts, remotehosts = Array(hosts).partition { |h| h.hostname.to_s == 'localhost' }
       localhost = Configuration.env.filter(localhosts).first
+      
       Bundler.with_clean_env do
         unless localhost.nil?
           if dry_run?
             SSHKit::Backend::Printer
           else
             SSHKit::Backend::Local
-            end.new(localhost, &block).run
-          end
+          end.new(localhost, &block).run
         end
-
+      end
       original_on(remotehosts, options, &block)
     end
 
